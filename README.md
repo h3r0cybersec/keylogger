@@ -5,6 +5,9 @@ For now it's only work on Unix like systems but as soon as possibile the windows
 
 As it is, depends on Xlib **python3-xlib** and works by relying on the X server but for the future this will be an option because it should be able to work without gui library.
 
+## DISCLAIMER
+Before proceeding, it is good to know that this tool has been made for educational purposes only and the author does not assume any responsibility for its misuse for illegal purposes by third parties.
+
 ## Command Line option
 
 OPTION | INFO | DEFAULT
@@ -14,6 +17,13 @@ OPTION | INFO | DEFAULT
 | -o | store collected data in a different location | /var/log/keylogger.log
 | -v | show keylogger version | 
 | -h | show usage information |
+
+## Installation
+Before starting the script you should install **pyxhook** so 
+
+```bash
+pip3 install -r requirements.txt
+```
 
 ## Start the keylogger
 
