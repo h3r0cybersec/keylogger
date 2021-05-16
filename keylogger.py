@@ -1,4 +1,3 @@
-from genericpath import exists
 import pyxhook
 from signal import SIGKILL
 from string import ascii_uppercase
