@@ -91,7 +91,9 @@ chars_mapping =  {
         "underscore": "_"
     },
     "alt_gr": {
-
+        "ograve": "@",
+        "egrave": "[",
+        "plus": "]"
     }
 }
 
@@ -120,7 +122,7 @@ def OnKeyPress(event):
             text+=f"{chars_mapping['shift'].get(event.Key, '<NM>')}"
         shift_key = False
     elif alt_gr_key:
-        text+=f"<AltGR + {event.Key}>"
+        text+=f"{chars_mapping['alt_gr'].get(event.Key, event.Key)}"
         alt_gr_key = False
     else:
         if event.Key in chars_mapping["key"]:
