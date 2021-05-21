@@ -40,7 +40,7 @@ chars_mapping =  {
     "key": {
         "Return": "\n",
         "space": " ",
-        "BackSpace": "\b",
+        "BackSpace": "<BKS>",
         "Alt_L": "",
         "Shift_L": "",
         "Shift_R": "",
@@ -49,7 +49,7 @@ chars_mapping =  {
         "Escape": "<ESC>",
         "Delete": "<CANC>",
         "Caps_Lock": "<CAPS_LOCK>",
-        "Tab": "\t",
+        "Tab": "<TAB>",
         "period": ".",
         "P_Divide": "/",
         "comma": ",",
@@ -120,10 +120,10 @@ def OnKeyPress(event):
         if event.Key in ascii_uppercase:
             text += event.Key
         else:
-            text+=f"{chars_mapping['shift'].get(event.Key, '<NM>')}"
+            text+=f"{chars_mapping['shift'].get(event.Key, '')}"
         shift_key = False
     elif alt_gr_key:
-        text+=f"{chars_mapping['alt_gr'].get(event.Key, event.Key)}"
+        text+=f"{chars_mapping['alt_gr'].get(event.Key, '')}"
         alt_gr_key = False
     else:
         if event.Key in chars_mapping["key"]:
@@ -145,7 +145,7 @@ def OnKeyPress(event):
             # If we hold a hotkey and try to press different key 
             # that need a hotkey to be visualized we are in this situation
             if event.Key in chars_mapping["shift"]:
-                text += f"{chars_mapping['shift'].get(event.Key, '<NM>')}"
+                text += f"{chars_mapping['shift'].get(event.Key, '')}"
             else:
                 text += event.Key
 
