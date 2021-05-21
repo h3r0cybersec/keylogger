@@ -1,5 +1,4 @@
-IMPROVEMENTS
-============
+TODOS
+=====
 [ ] stop keylogger in a more elegant way
-[ ] add support for window
-[ ] improve the keylogger it self to be indipendant from X server etc
+[ ] add support for window display manager
